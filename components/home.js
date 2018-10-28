@@ -5,7 +5,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Home</Text>
+        <Text>Flash Cards</Text>
         <Button 
           title='Create'
           onPress={
@@ -15,19 +15,19 @@ export default class Home extends React.Component {
         <Button 
           title='Play'
           onPress={
-            () => this.props.navigation.navigate('Create', { username: 'Jack'})
+            () => this.props.navigation.navigate('Play', { username: 'Jack'})
           }
         />
         <Button 
           title='Edit / Delete'
           onPress={
-            () => this.props.navigation.navigate('Create', { username: 'Jack'})
+            () => this.props.navigation.navigate('Edit', { username: 'Jack'})
           }
         />
         <Button 
           title='Setting'
           onPress={
-            () => this.props.navigation.navigate('Create', { username: 'Jack'})
+            () => this.props.navigation.navigate('Setting', { username: 'Jack'})
           }
         />
       </View>
