@@ -4,9 +4,11 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 export default class Home extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View styles={styles.container}>
         <Text>Flash Cards</Text>
         <Button 
+        //creat style fot button
+          styles={styles.mainButtuns}
           title='Create'
           onPress={
             () => this.props.navigation.navigate('Create', { username: 'Jack'})
@@ -41,5 +43,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  mainButtuns:{
+    //create rounded button style
+    //put in the center
+    //bugger space between buttons
+    borderColor: "black",
+
   },
 });
