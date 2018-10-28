@@ -12,6 +12,24 @@ export default class Home extends React.Component {
             () => this.props.navigation.navigate('Create', { username: 'Jack'})
           }
         />
+        <Button 
+          title='Play'
+          onPress={
+            () => this.props.navigation.navigate('Create', { username: 'Jack'})
+          }
+        />
+        <Button 
+          title='Edit / Delete'
+          onPress={
+            () => this.props.navigation.navigate('Create', { username: 'Jack'})
+          }
+        />
+        <Button 
+          title='Setting'
+          onPress={
+            () => this.props.navigation.navigate('Create', { username: 'Jack'})
+          }
+        />
       </View>
     );
   }
