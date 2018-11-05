@@ -9,8 +9,8 @@ import Setting from './components/setting'
 import { createStackNavigator } from 'react-navigation'
 
 const RootStack = createStackNavigator({
-  Create: Create,
   Home: Home,
+  Create: Create,
   Play: Play,
   Edit: Edit,
   Setting: Setting
