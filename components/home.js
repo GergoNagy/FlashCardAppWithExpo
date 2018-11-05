@@ -48,7 +48,5 @@ const styles = StyleSheet.create({
     //create rounded button style
     //put in the center
     //bugger space between buttons
-    borderColor: "black",
-
   },
 });
