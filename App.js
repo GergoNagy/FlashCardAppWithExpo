@@ -1,4 +1,6 @@
 import React from 'react';
+import * as firebase from 'firebase'
+import ApiKeys from './ApiKeys'
 
 import Home from './components/home'
 import Create from './components/create'
@@ -17,9 +19,21 @@ const RootStack = createStackNavigator({
 })
 
 export default class App extends React.Component {
+  constructor(){
+    super()
+
+    this.state = {
+
+    }
+    
+    this.firebaseApp = firebase.initializeApp(ApiKeys.firebaseConfig);
+
+    // if (!firebase.app.length) {firebase.initializeApp(ApiKeys.firebaseConfig)}
+  }
+
   render() {
     return (
-      <RootStack />
+      <RootStack screenProps = { this.firebaseApp } />
     );
   }
 }

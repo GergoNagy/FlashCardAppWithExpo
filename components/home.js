@@ -7,23 +7,22 @@ export default class Home extends React.Component {
       <View styles={styles.container}>
         <Text>Flash Cards</Text>
         <Button 
-        //creat style fot button
           styles={styles.mainButtuns}
           title='Create'
           onPress={
-            () => this.props.navigation.navigate('Create', { username: 'Jack'})
+            () => this.props.navigation.navigate('Create')
           }
         />
         <Button 
           title='Play'
           onPress={
-            () => this.props.navigation.navigate('Play', { username: 'Jack'})
+            () => this.props.navigation.navigate('Play')
           }
         />
         <Button 
           title='Edit / Delete'
           onPress={
-            () => this.props.navigation.navigate('Edit', { username: 'Jack'})
+            () => this.props.navigation.navigate('Edit')
           }
         />
         <Button 
