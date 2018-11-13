@@ -13,12 +13,14 @@ export default class Create extends React.Component {
     super(props)
 
     this.state = {
-      name: ''
+      oWord: '',
+      tWord: '',
+      hint: '',
+      language: 'English'
     }
 
     this.firebaseApp = this.props.screenProps
-
-    this.itemsRef = this.getRef().child('items');
+    this.itemsRef = this.getRef().child('cards').child( this.state.language );
   }
 
   getRef(){
@@ -31,10 +33,24 @@ export default class Create extends React.Component {
         <Content>
           <Item>
             <Input
-              onChangeText={(name) => this.setState({ name })}
+              onChangeText={(oWord) => this.setState({ oWord })}
               placeholder='Origin Word'
             />
-            <Button onPress={() => {this.itemsRef.push({title: this.state.name})}} >
+            </Item>
+            <Item>
+            <Input
+              onChangeText={(tWord) => this.setState({ tWord })}
+              placeholder='Translation'
+            />
+            </Item>
+            <Item>
+            <Input
+              onChangeText={(hint) => this.setState({ hint })}
+              placeholder='Hint'
+            />
+            </Item>
+            <Item>
+            <Button onPress={() => {this.itemsRef.push( this.state )}} >
               <Icon name='add' />
             </Button>
           </Item>
