@@ -4,7 +4,8 @@ import ApiKeys from './ApiKeys'
 
 import Home from './components/home'
 import Create from './components/create'
-import Play from './components/play'
+import Play from './components/playScreens/play'
+import LevelSelect from './components/playScreens/levelSelect'
 import Edit from './components/edit'
 import Setting from './components/setting' 
 
@@ -14,6 +15,7 @@ const RootStack = createStackNavigator({
   Home: Home,
   Create: Create,
   Play: Play,
+  LevelSelect: LevelSelect,
   Edit: Edit,
   Setting: Setting
 })

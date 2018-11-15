@@ -2,9 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { Input, Container, Content, Item, Button, Icon, List, ListItem } from 'native-base';
-import * as firebase from 'firebase';
 
-import Style from '../Style/mainStyle'
+import Style from '../../Style/mainStyle'
 
 export default class Play extends React.Component {
   constructor(props){
@@ -44,13 +43,17 @@ export default class Play extends React.Component {
   }
 
   pressRow(item){
-    console.log(item)
+    // console.log(item)
+    //open the next page with the card under English 
+    
+     this.props.navigation.navigate('LevelSelect', { language: item.languages }  )
   }
 
   renderRow(item){
     return(
       <TouchableHighlight onPress={() => {
         this.pressRow(item);
+        
       }} >
       <View style={Style.li}>
          <Text style={Style.liText}> { item.languages } </Text>
@@ -65,12 +68,6 @@ export default class Play extends React.Component {
 
   componentDidMount(){
     this.getItems(this.itemsRef);
-  }
-
-  addRow(data){
-    
-    var key = firebase.database().ref('/contacts').push().key
-    firebase.database().ref('/contacts').child(key).set({ name: data })
   }
 
   render() {
