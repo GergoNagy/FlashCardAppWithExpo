@@ -15,12 +15,13 @@ export default class Create extends React.Component {
     this.state = {
       oWord: '',
       tWord: '',
-      hint: '',
-      language: 'English'
+      hint: ''
     }
 
+    this.topic = 'Fruits'
+
     this.firebaseApp = this.props.screenProps
-    this.itemsRef = this.getRef().child('cards').child( this.state.language );
+    this.itemsRef = this.getRef().child('cards').child( this.topic );
   }
 
   getRef(){
@@ -32,6 +33,7 @@ export default class Create extends React.Component {
       <Container style={Style.container}>
         <Content>
           <Item>
+            
             <Input
               onChangeText={(oWord) => this.setState({ oWord })}
               placeholder='Origin Word'

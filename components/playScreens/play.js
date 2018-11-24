@@ -33,7 +33,7 @@ export default class Play extends React.Component {
 
       snap.forEach((child) => {
         items.push({
-          languages: child.key
+          topic: child.key
         });
       });
       this.setState({
@@ -46,17 +46,16 @@ export default class Play extends React.Component {
     // console.log(item)
     //open the next page with the card under English 
     
-     this.props.navigation.navigate('LevelSelect', { language: item.languages }  )
+     this.props.navigation.navigate('Card', { topic: item.topic }  )
   }
 
   renderRow(item){
     return(
       <TouchableHighlight onPress={() => {
         this.pressRow(item);
-        
       }} >
       <View style={Style.li}>
-         <Text style={Style.liText}> { item.languages } </Text>
+         <Text style={Style.liText}> { item.topic } </Text>
       </View>
       </TouchableHighlight>
     )
