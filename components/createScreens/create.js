@@ -5,7 +5,7 @@ import { Input, Container, Content, Item, Button, Icon, List, ListItem } from 'n
 
 import * as firebase from 'firebase';
 
-import Style from '../Style/mainStyle'
+import Style from '../../Style/mainStyle.js'
 
 
 export default class Create extends React.Component {
@@ -18,7 +18,9 @@ export default class Create extends React.Component {
       hint: ''
     }
 
-    this.topic = 'Fruits'
+    this.topic = this.props.navigation.getParam('topic')
+
+    // this.topic = 'Fruits'
 
     this.firebaseApp = this.props.screenProps
     this.itemsRef = this.getRef().child('cards').child( this.topic );
@@ -33,7 +35,6 @@ export default class Create extends React.Component {
       <Container style={Style.container}>
         <Content>
           <Item>
-            
             <Input
               onChangeText={(oWord) => this.setState({ oWord })}
               placeholder='Origin Word'

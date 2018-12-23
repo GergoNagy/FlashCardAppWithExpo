@@ -10,7 +10,7 @@ export default class Home extends React.Component {
           styles={styles.mainButtuns}
           title='Create'
           onPress={
-            () => this.props.navigation.navigate('Create')
+            () => this.props.navigation.navigate('CreateSelect')
           }
         />
         <Button 

@@ -3,7 +3,8 @@ import * as firebase from 'firebase'
 import ApiKeys from './ApiKeys'
 
 import Home from './components/home'
-import Create from './components/create'
+import Create from './components/createScreens/create'
+import TopicSelector from './components/createScreens/topicSelector'
 import Play from './components/playScreens/play'
 import Card from './components/playScreens/card'
 import Edit from './components/edit'
@@ -14,6 +15,7 @@ import { createStackNavigator } from 'react-navigation'
 const RootStack = createStackNavigator({
   Home: Home,
   Create: Create,
+  CreateSelect: TopicSelector,
   Play: Play,
   Card: Card,
   Edit: Edit,

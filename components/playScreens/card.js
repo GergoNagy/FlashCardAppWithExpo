@@ -1,8 +1,8 @@
 import React from 'react';
-// import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
+import { Button } from 'react-native';
 // import { createStackNavigator } from 'react-navigation';
 // import { DeckSwiper, CardItem, Card } from 'native-base';
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import { View, DeckSwiper, Card, CardItem, Text } from 'native-base';
 
 import Style from '../../Style/mainStyle'
 
@@ -11,7 +11,8 @@ export default class CardView extends React.Component {
     super(props);
 
     this.state = {
-      cards: []
+      cards: [],
+      isHidden: false
     }
 
     this.firebaseApp = this.props.screenProps
@@ -50,20 +51,21 @@ export default class CardView extends React.Component {
 
   render() {
     return (
-        <View style={{height:400}}>
+      <View style={{ height: 400 }}>
         <DeckSwiper
           dataSource={this.state.cards}
           renderItem={item =>
             <Card style={{ elevation: 3 }}>
               <CardItem>
-                    <Text>{item.oWord}</Text>
+                <Text>{item.oWord}</Text>
               </CardItem>
               <CardItem>
-                    <Text>{item.tWord}</Text>
+                <Text style={{ display: 'none' }} >{item.tWord}</Text>
               </CardItem>
               <CardItem>
-                    <Text>{item.hint}</Text>
+                {this.state.isHidden && <Text>{item.hint}</Text>}
               </CardItem>
+              <Button title='hint' onPress={()=> this.setState({isHidden: 'true'})} />
             </Card>
           }
         />
