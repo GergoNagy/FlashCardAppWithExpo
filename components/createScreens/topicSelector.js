@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ListView, TouchableHighlight } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
-import { Input, Container, Content, Item, Button, Icon, List, ListItem } from 'native-base';
+import { Button, Text, View, ListView, TouchableHighlight } from 'react-native';
+import Dialog, { SlideAnimation, DialogContent } from 'react-native-popup-dialog';
+import { Container, Content } from 'native-base';
 
 import Style from '../../Style/mainStyle'
 
@@ -12,7 +12,8 @@ export default class TopicSelector extends React.Component {
         let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
         this.state = {
-            itemDataSource: ds
+            itemDataSource: ds,
+            visible: false
         }
 
         this.firebaseApp = this.props.screenProps
@@ -48,11 +49,33 @@ export default class TopicSelector extends React.Component {
 
     createTopic() {
         console.log("new topci")
+        //pop up for create new title
     }
 
     renderRow(item) {
         return (
             <View>
+                <Button
+                    title="Show Dialog"
+                    onPress={() => {
+                        this.setState({ visible: true });
+                    }}
+                />
+                <View>
+                    <Dialog
+                        visible={this.state.visible}
+                        onTouchOutside={() => {
+                            this.setState({ visible: false });
+                        }}
+                    >
+                        <DialogContent>
+                            <Text>Hello</Text>
+                        </DialogContent>
+                    </Dialog>
+                </View>
+
+
+
                 <TouchableHighlight
                     onPress={() => {
                         this.createTopic();
