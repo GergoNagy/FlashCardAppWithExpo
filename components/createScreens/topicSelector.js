@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text, View, ListView, TouchableHighlight } from 'react-native';
-import Dialog, { SlideAnimation, DialogContent } from 'react-native-popup-dialog';
+import Dialog, { DialogButton, DialogTitle, SlideAnimation, DialogContent } from 'react-native-popup-dialog';
 import { Container, Content } from 'native-base';
 
 import Style from '../../Style/mainStyle'
@@ -47,42 +47,9 @@ export default class TopicSelector extends React.Component {
         this.props.navigation.navigate('Create', { topic: item.topic })
     }
 
-    createTopic() {
-        console.log("new topci")
-        //pop up for create new title
-    }
-
     renderRow(item) {
         return (
             <View>
-                <Button
-                    title="Show Dialog"
-                    onPress={() => {
-                        this.setState({ visible: true });
-                    }}
-                />
-                <View>
-                    <Dialog
-                        visible={this.state.visible}
-                        onTouchOutside={() => {
-                            this.setState({ visible: false });
-                        }}
-                    >
-                        <DialogContent>
-                            <Text>Hello</Text>
-                        </DialogContent>
-                    </Dialog>
-                </View>
-
-
-
-                <TouchableHighlight
-                    onPress={() => {
-                        this.createTopic();
-                    }}>
-                    <Text>Add New Topic</Text>
-                </TouchableHighlight>
-
                 <TouchableHighlight onPress={() => {
                     this.pressRow(item);
                 }} >
@@ -90,7 +57,6 @@ export default class TopicSelector extends React.Component {
                         <Text style={Style.liText}> {item.topic} </Text>
                     </View>
                 </TouchableHighlight>
-
             </View>
         )
     }
@@ -106,7 +72,33 @@ export default class TopicSelector extends React.Component {
     render() {
         return (
             <Container style={Style.container}>
+                <Button
+                    title="Add New Topic"
+                    onPress={() => {
+                        this.setState({ visible: true });
+                    }}
+                />
+                <View>
+                    <Dialog
+                        visible={this.state.visible}
+                        dialogTitle={<DialogTitle title="Creat a new Topic" />}
+                        actions={[
+                            <DialogButton
+                                text="Create"
+                                onPress={() => { console.log("create new title") } }
+                            />,
+                        ]}
+                        onTouchOutside={() => {
+                            this.setState({ visible: false });
+                        }}
+                    >
+                        <DialogContent>
+                            <Text>Hello</Text>
+                        </DialogContent>
+                    </Dialog>
+                </View>
                 <Content>
+
                     <ListView
                         dataSource={this.state.itemDataSource}
                         renderRow={this.renderRow}
